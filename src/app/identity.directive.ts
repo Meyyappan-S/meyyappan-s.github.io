@@ -1,6 +1,6 @@
-import { ValidatorFn, FormGroup, ValidationErrors } from '@angular/forms';
+import { ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 
-export const identityValidator: ValidatorFn = (control: FormGroup): ValidationErrors | null => {
+export const identityValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
 
     const name = control.get('idProof').value;
     const idProofValue = control.get('idProofValue').value;
