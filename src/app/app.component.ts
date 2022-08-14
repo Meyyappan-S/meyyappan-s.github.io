@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
-import { dateValidator } from '../shared/date.directive';
-import { identityValidator } from '../shared/identity.directive';
+import { dateValidator } from './date.directive';
+import { identityValidator } from './identity.directive';
 
 @Component({
     selector: 'app-root',
