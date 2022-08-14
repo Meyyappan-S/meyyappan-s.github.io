@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
-import { dateValidator } from './date.validator';
-import { identityValidator } from './identity.validator';
+import { dateValidator } from '../shared/date.directive';
+import { identityValidator } from '../shared/identity.directive';
 
 @Component({
     selector: 'app-root',
@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
     ticketForm: FormGroup;
 
     constructor() {
-
+      this.ticketForm = new FormGroup({});
     }
 
     ngOnInit() {
@@ -102,7 +102,7 @@ export class AppComponent implements OnInit {
     getProofValidity(): boolean {
         if (this.ticketForm.errors === null) {
             return false;
-        } else if (this.ticketForm.errors.identity && this.ticketForm.get('idProofValue').touched) {
+        } else if (this.ticketForm.errors['identity'] && this.ticketForm.get('idProofValue')!.touched) {
             return true;
         } else {
             return false;
