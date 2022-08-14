@@ -1,91 +1,91 @@
 <div class="body">
-    <div class="container">
-        <div class="row">
+  <div class="container">
+      <div class="row">
 
-            <h1>Ticket Booking Form</h1>
-            <hr>
-            <form [formGroup]="ticketForm" (ngSubmit)="onSubmit()">
-                <div class="form-group">
-                    <label>Start Place</label>
-                    <input type="text" class="form-control" formControlName="from" required placeholder="From">
-                    <p *ngIf="from.invalid && from.touched">
-                        *Start Place required
-                    </p>
-                </div>
-                <div class="form-group">
-                    <label for="to">End Place</label>
-                    <input type="text" class="form-control" id="to" formControlName="to" required placeholder="To">
-                    <p *ngIf="to.invalid && to.touched">
-                        *End Place required
-                    </p>
-                </div>
-                <div class="form-group">
-                    <label>Journey Date</label>
-                    <input type="text" class="form-control" formControlName="journeyDate" required placeholder="MM/DD/YYYY">
-                    <p *ngIf="journeyDate.invalid && journeyDate.touched">
-                        *Enter a validDate.
-                    </p>
-                </div>
-                <hr>
-                <div formArrayName="passengerDetails">
-                    <h3>Passenger Details</h3>
-                    <div class="form-inline" *ngFor="let passenger of passengerForms.controls; index as i" [formGroupName]="i">
-                        <div class="form-group">
-                            <label for="name">Name:</label>
-                            <input type="text" class="form-control" formControlName="name" id="name" placeholder="Passenger {{i+1}}">
-                        </div>
-                        <div class="form-group">
-                            <label for="age">Age:</label>
-                            <input type="text" class="form-control" formControlName="age" id="age">
-                        </div>
-                        <label class="radio-inline">
-                            <input type="radio" formControlName="gender" id="male{{i}}" value="Male"> Male
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" formControlName="gender" id="female{{i}}" value="Female"> Female
-                        </label>
+          <h1>Ticket Booking Form</h1>
+          <hr>
+          <form [formGroup]="ticketForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                  <label>Start Place</label>
+                  <input type="text" class="form-control" formControlName="from" required placeholder="From">
+                  <p *ngIf="from!.invalid && from!.touched">
+                      *Start Place required
+                  </p>
+              </div>
+              <div class="form-group">
+                  <label for="to">End Place</label>
+                  <input type="text" class="form-control" id="to" formControlName="to" required placeholder="To">
+                  <p *ngIf="to!.invalid && to!.touched">
+                      *End Place required
+                  </p>
+              </div>
+              <div class="form-group">
+                  <label>Journey Date</label>
+                  <input type="text" class="form-control" formControlName="journeyDate" required placeholder="MM/DD/YYYY">
+                  <p *ngIf="journeyDate!.invalid && journeyDate!.touched">
+                      *Enter a validDate.
+                  </p>
+              </div>
+              <hr>
+              <div formArrayName="passengerDetails">
+                  <h3>Passenger Details</h3>
+                  <div class="form-inline" *ngFor="let passenger of passengerForms.controls; index as i" [formGroupName]="i">
+                      <div class="form-group">
+                          <label for="name">Name:</label>
+                          <input type="text" class="form-control" formControlName="name" id="name" placeholder="Passenger {{i+1}}">
+                      </div>
+                      <div class="form-group">
+                          <label for="age">Age:</label>
+                          <input type="text" class="form-control" formControlName="age" id="age">
+                      </div>
+                      <label class="radio-inline">
+                          <input type="radio" formControlName="gender" id="male{{i}}" value="Male"> Male
+                      </label>
+                      <label class="radio-inline">
+                          <input type="radio" formControlName="gender" id="female{{i}}" value="Female"> Female
+                      </label>
 
-                        <span (click)="deletePassenger(i)" class="glyphicon glyphicon-trash"></span>
+                      <span (click)="deletePassenger(i)" class="glyphicon glyphicon-trash"></span>
 
-                        <p *ngIf="getValidity(i,'name') && getValidity(i,'name').required">
-                            Name Required
-                        </p>
-                        <p *ngIf="getValidity(i,'age') && getValidity(i,'age').required">
-                            Age Required
-                        </p>
-                        <p *ngIf="getValidity(i,'age') && getValidity(i,'age').pattern">
-                            Enter a valid age
-                        </p>
-                        <p *ngIf="getValidity(i,'gender') && getValidity(i,'gender').required">
-                            Gender Required
-                        </p>
+                      <p *ngIf="getValidity(i,'name') && getValidity(i,'name')!['required']">
+                          Name Required
+                      </p>
+                      <p *ngIf="getValidity(i,'age') && getValidity(i,'age')!['required']">
+                          Age Required
+                      </p>
+                      <p *ngIf="getValidity(i,'age') && getValidity(i,'age')!['pattern']">
+                          Enter a valid age
+                      </p>
+                      <p *ngIf="getValidity(i,'gender') && getValidity(i,'gender')!['required']">
+                          Gender Required
+                      </p>
 
-                    </div>
-                </div>
+                  </div>
+              </div>
 
-                <button (click)="addPassenger()" type="button" id="add" class="btn btn-success">Add Passenger</button>
+              <button (click)="addPassenger()" type="button" id="add" class="btn btn-success">Add Passenger</button>
 
-                <hr>
+              <hr>
 
-                <div class="form-inline">
-                    <div class="form-group">
-                        <label>Select Id</label>
-                        <select formControlName="idProof" class="form-control">
-                            <option value="Aadhar">Aadhar Card</option>
-                            <option value="Pan">PAN Card</option>
-                        </select>
-                    </div>
+              <div class="form-inline">
+                  <div class="form-group">
+                      <label>Select Id</label>
+                      <select formControlName="idProof" class="form-control">
+                          <option value="Aadhar">Aadhar Card</option>
+                          <option value="Pan">PAN Card</option>
+                      </select>
+                  </div>
 
-                    <div class="form-group">
-                        <label>Id Proof Value:</label>
-                        <input type="text" class="form-control" formControlName="idProofValue" required>
-                    </div>
-                </div>
-                <p *ngIf="getProofValidity()">
-                    *Select a ID proof or Enter a valid ID
-                </p>
-                <button type="submit" [disabled]="!ticketForm.valid" class="btn btn-success">Submit</button>
-            </form>
-        </div>
-    </div>
+                  <div class="form-group">
+                      <label>Id Proof Value:</label>
+                      <input type="text" class="form-control" formControlName="idProofValue" required>
+                  </div>
+              </div>
+              <p *ngIf="getProofValidity()">
+                  *Select a ID proof or Enter a valid ID
+              </p>
+              <button type="submit" [disabled]="!ticketForm.valid" class="btn btn-success">Submit</button>
+          </form>
+      </div>
+  </div>
 </div>
