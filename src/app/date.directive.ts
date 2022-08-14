@@ -34,6 +34,6 @@ export function dateValidator(): ValidatorFn {
             return invalidObj;
         }
 
-        return null;
+        return {};
     }
 }
